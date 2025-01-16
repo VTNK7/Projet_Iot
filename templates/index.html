@@ -2,19 +2,24 @@
 <html>
 <head>
     <title>Capteurs</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
 </head>
 <body>
     <h1>Dernières données des capteurs</h1>
-    <ul>
+    <div class="container">
         {% for sensor in data %}
-            <li>
-                <strong>Type :</strong> {{ sensor[0] }}<br>
-                <strong>Température :</strong> {{ sensor[1] }} °C<br>
-                <strong>Humidité :</strong> {{ sensor[2] }} %<br>
-                <strong>Timestamp :</strong> {{ sensor[3] }}<br>
-                <a href="/history/{{ sensor[0] }}">Voir l'historique</a>
-            </li>
+        <div class="sensor-card">
+            <h2>{{ sensor.sensor_type }}</h2>
+            <p><strong>Timestamp :</strong> {{ sensor.timestamp }}</p>
+            {% if sensor.sensor_type == "Température/Humidité" %}
+                <p><strong>Température :</strong> {{ sensor.temperature }} °C</p>
+                <p><strong>Humidité :</strong> {{ sensor.humidity }} %</p>
+            {% elif sensor.sensor_type == "Fermeture de porte" %}
+                <p><strong>État de la porte :</strong> {{ sensor.door }}</p>
+            {% endif %}
+            <a href="/history/{{ loop.index0 }}">Voir l'historique</a>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>

@@ -1,26 +1,32 @@
 [
     {
-        "sensor_type": "temperature_humidity",
-        "temperature": 22.5,
-        "humidity": 45.0,
-        "timestamp": "2025-01-16 10:00:00"
+        "timestamp": "2025-01-16 10:00:00",
+        "data": {
+            "id": 0,
+            "temperature": 23.5,
+            "humidity": 60
+        }
     },
     {
-        "sensor_type": "door_status",
-        "temperature": null,
-        "humidity": null,
-        "timestamp": "2025-01-16 10:05:00"
+        "timestamp": "2025-01-16 10:05:00",
+        "data": {
+            "id": 1,
+            "door": 1
+        }
     },
     {
-        "sensor_type": "temperature_humidity",
-        "temperature": 23.0,
-        "humidity": 50.0,
-        "timestamp": "2025-01-16 10:10:00"
+        "timestamp": "2025-01-16 10:10:00",
+        "data": {
+            "id": 0,
+            "temperature": 24.0,
+            "humidity": 58
+        }
     },
     {
-        "sensor_type": "door_status",
-        "temperature": null,
-        "humidity": null,
-        "timestamp": "2025-01-16 10:15:00"
+        "timestamp": "2025-01-16 10:15:00",
+        "data": {
+            "id": 1,
+            "door": 0
+        }
     }
 ]
