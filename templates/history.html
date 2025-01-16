@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Historique du capteur {{ sensor_type }}</title>
+</head>
+<body>
+    <h1>Historique du capteur {{ sensor_type }}</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Température (°C)</th>
+                <th>Humidité (%)</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in data %}
+                <tr>
+                    <td>{{ entry[0] }}</td>
+                    <td>{{ entry[1] }}</td>
+                    <td>{{ entry[2] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/">Retour à l'accueil</a>
+</body>
+</html>

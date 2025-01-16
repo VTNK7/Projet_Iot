@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Capteurs</title>
+</head>
+<body>
+    <h1>Dernières données des capteurs</h1>
+    <ul>
+        {% for sensor in data %}
+            <li>
+                <strong>Type :</strong> {{ sensor[0] }}<br>
+                <strong>Température :</strong> {{ sensor[1] }} °C<br>
+                <strong>Humidité :</strong> {{ sensor[2] }} %<br>
+                <strong>Timestamp :</strong> {{ sensor[3] }}<br>
+                <a href="/history/{{ sensor[0] }}">Voir l'historique</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

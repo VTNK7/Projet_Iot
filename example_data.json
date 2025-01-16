@@ -1,0 +1,26 @@
+[
+    {
+        "sensor_type": "temperature_humidity",
+        "temperature": 22.5,
+        "humidity": 45.0,
+        "timestamp": "2025-01-16 10:00:00"
+    },
+    {
+        "sensor_type": "door_status",
+        "temperature": null,
+        "humidity": null,
+        "timestamp": "2025-01-16 10:05:00"
+    },
+    {
+        "sensor_type": "temperature_humidity",
+        "temperature": 23.0,
+        "humidity": 50.0,
+        "timestamp": "2025-01-16 10:10:00"
+    },
+    {
+        "sensor_type": "door_status",
+        "temperature": null,
+        "humidity": null,
+        "timestamp": "2025-01-16 10:15:00"
+    }
+]
