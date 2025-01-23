@@ -25,7 +25,7 @@ def get_temperature():
             temperature = data['current_weather']['temperature']
             timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
             
-            # Créer un dictionnaire avec la température et l'horodatage
+            # Créer un json avec la température et l'horodatage
             meteo_data = {
                 "timestamp": timestamp,
                 "temperature": temperature
@@ -34,7 +34,7 @@ def get_temperature():
             # Sauvegarder les données dans le fichier meteo.json
             with open('meteo.json', 'a') as f:
                 json.dump(meteo_data, f)
-                f.write('\n')  # Saut de ligne pour séparer les entrées
+                f.write('\n')  
             print(f"Données sauvegardées : {meteo_data}")
         else:
             print(f"Erreur lors de la requête : {data}")
@@ -43,8 +43,8 @@ def get_temperature():
 
 def main():
     while True:
-        get_temperature()  # Appeler la fonction pour obtenir la température
-        time.sleep(600)  # Attendre 10 minutes (600 secondes)
+        get_temperature()  
+        time.sleep(600)  # Attendre 10 minutes
 
 if __name__ == '__main__':
     main()
