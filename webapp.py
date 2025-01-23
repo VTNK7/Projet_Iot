@@ -1,6 +1,6 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from pywebpush import webpush, WebPushException
-import request
+import requests
 import json
 from dotenv import load_dotenv
 import os
@@ -90,27 +90,12 @@ def api_data():
     data = load_example_data()
     return jsonify(data)
 
-
-subscriptions = []
-
 # Route to save subscription
 @app.route("/subscribe", methods=["POST"])
 def subscribe():
-    subscription_info = request.json
+    subscription_info = requests.json
     subscriptions.append(subscription_info)
     return jsonify({"message": "Subscription saved!"}), 201
-
-
-# Fetch outside temperature from meteo.json
-def fetch_outside_temperature():
-    try:
-        with open("meteo.json", "r") as file:
-            data = json.load(file)
-            return data.get("temperature")
-    except Exception as e:
-        print(f"Error reading meteo.json: {e}")
-    return None
-
 
 # Route to send notifications
 @app.route("/send_notification", methods=["POST"])
@@ -127,6 +112,37 @@ def send_notification():
         except WebPushException as e:
             print(f"Error sending push notification: {e}")
     return jsonify({"message": "Notifications sent!"}), 200
+
+subscriptions = []
+
+# Fetch outside temperature from meteo.json
+def fetch_outside_temperature():
+    try:
+        with open("meteo.json", "r") as file:
+            data = json.load(file)
+            return data.get("temperature")
+    except Exception as e:
+        print(f"Error reading meteo.json: {e}")
+    return None
+
+@app.route("/send-test-notification", methods=["GET"])
+def send_test_notification():
+    message = "Ceci est une notification de test !"
+    for subscription in subscriptions:
+        try:
+            webpush(
+                subscription_info=subscription,
+                data=message,
+                vapid_private_key=VAPID_PRIVATE_KEY,
+                vapid_claims=VAPID_CLAIMS,
+            )
+        except WebPushException as e:
+            print(f"Erreur d'envoi de notification : {e}")
+    return jsonify({"message": "Notification envoyée !"}), 200
+
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 
 if __name__ == '__main__':

@@ -55,3 +55,45 @@ h1 {
 .sensor-card a:hover {
     background-color: #0056b3;
 }
+
+
+
+/* BANIERE */ 
+/* Bannière */
+.banner {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.banner-content h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.subscribe-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.subscribe-btn:hover {
+    background-color: #00408d;
+}
+
+/* Contenu principal */
+.main-content {
+    margin-top: 100px; /* Décale le contenu principal pour éviter qu'il soit sous la bannière */
+    padding: 20px
+}
