@@ -100,7 +100,7 @@ def subscribe():
 # Route to send notifications
 @app.route("/send_notification", methods=["POST"])
 def send_notification():
-    message = request.json.get("message", "Default Notification")
+    message = requests.json.get("message", "Default Notification")
     for subscription in subscriptions:
         try:
             webpush(
