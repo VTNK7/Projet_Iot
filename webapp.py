@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify
 from pywebpush import webpush, WebPushException
+import request
 import json
 from dotenv import load_dotenv
 import os
@@ -9,14 +10,14 @@ load_dotenv()
 
 VAPID_PUBLIC_KEY = os.getenv("VAPID_PUBLIC_KEY")
 VAPID_PRIVATE_KEY = os.getenv("VAPID_PRIVATE_KEY")
-
+VAPID_CLAIMS = {"sub": "mailto:your_email@example.com"}
 
 
 app = Flask(__name__)
 
 # Charger les données simulées à partir d'un fichier JSON
 def load_example_data():
-    with open('../data_logs.json', 'r') as file:
+    with open('data_logs.json', 'r') as file:
         return json.load(file)
 
 # Route pour afficher les dernières données des capteurs
@@ -46,6 +47,15 @@ def index():
         elif sensor_id == 1:  # Fermeture de porte
             sensor_info["door"] = "Fermé" if entry["data"]["door"] == 0 else "Ouvert"
         display_data.append(sensor_info)
+
+        # Check conditions and send notifications if needed
+        if display_data[0]["door"] == 1:  # Door is open
+            outside_temp = fetch_outside_temperature()
+            if outside_temp is not None and display_data[0]["temperature"] is not None:
+                if outside_temp < display_data[0]["temperature"]:
+                    send_notification(
+                        f"The door is open! Outside temp: {outside_temp}°C, Inside temp: {display_data[0]['temperature']}°C"
+                    )
 
     return render_template('index.html', data=display_data)
 
@@ -89,6 +99,18 @@ def subscribe():
     subscription_info = request.json
     subscriptions.append(subscription_info)
     return jsonify({"message": "Subscription saved!"}), 201
+
+
+# Fetch outside temperature from meteo.json
+def fetch_outside_temperature():
+    try:
+        with open("meteo.json", "r") as file:
+            data = json.load(file)
+            return data.get("temperature")
+    except Exception as e:
+        print(f"Error reading meteo.json: {e}")
+    return None
+
 
 # Route to send notifications
 @app.route("/send_notification", methods=["POST"])
