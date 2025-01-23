@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask-SocketIO Notifications</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flask-SocketIO Browser Notifications</h1>
+    <p>Ensure notifications are enabled in your browser.</p>
+    <button id="enable-notifications">Enable Notifications</button>
+
+    <script>
+        // Check if the browser supports notifications
+        const enableButton = document.getElementById('enable-notifications');
+        enableButton.addEventListener('click', () => {
+            if ("Notification" in window) {
+                if (Notification.permission === "default") {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === "granted") {
+                            alert("Notifications enabled!");
+                        } else {
+                            alert("You need to allow notifications.");
+                        }
+                    });
+                } else if (Notification.permission === "granted") {
+                    alert("Notifications are already enabled!");
+                } else {
+                    alert("You have denied notifications. Update your browser settings to enable them.");
+                }
+            } else {
+                alert("This browser does not support notifications.");
+            }
+        });
+
+        // Connect to the Flask-SocketIO server
+        const socket = io();
+
+        // Listen for the 'notification' event
+        socket.on('notification', function(data) {
+            // Check if notifications are granted
+            if (Notification.permission === "granted") {
+                new Notification("New Event Notification", {
+                    body: data.message, // The message received from the server
+                    icon: "https://cdn-icons-png.flaticon.com/512/847/847969.png" // Optional: Add a notification icon
+                });
+            } else {
+                console.log("Notifications are not enabled. Message: ", data.message);
+            }
+        });
+    </script>
+</body>
+</html>
