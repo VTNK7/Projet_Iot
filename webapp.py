@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # Charger les données simulées à partir d'un fichier JSON
 def load_example_data():
-    with open('example_data.json', 'r') as file:
+    with open('data_logs.json', 'r') as file:
         return json.load(file)
 
 # Route pour afficher les dernières données des capteurs
