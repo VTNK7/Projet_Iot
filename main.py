@@ -1,5 +1,7 @@
 import requests
 import time
+import json
+from datetime import datetime
 
 # URL de l'API Open-Meteo pour la météo actuelle de Toulouse
 URL = "https://api.open-meteo.com/v1/forecast"
@@ -21,7 +23,19 @@ def get_temperature():
         if response.status_code == 200:
             # Extraire la température actuelle
             temperature = data['current_weather']['temperature']
-            print(f"Température actuelle à Toulouse : {temperature}°C")
+            timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+            
+            # Créer un dictionnaire avec la température et l'horodatage
+            meteo_data = {
+                "timestamp": timestamp,
+                "temperature": temperature
+            }
+
+            # Sauvegarder les données dans le fichier meteo.json
+            with open('meteo.json', 'a') as f:
+                json.dump(meteo_data, f)
+                f.write('\n')  # Saut de ligne pour séparer les entrées
+            print(f"Données sauvegardées : {meteo_data}")
         else:
             print(f"Erreur lors de la requête : {data}")
     except Exception as e:
@@ -30,7 +44,7 @@ def get_temperature():
 def main():
     while True:
         get_temperature()  # Appeler la fonction pour obtenir la température
-        time.sleep(10)  # Attendre 10 minutes (600 secondes)
+        time.sleep(600)  # Attendre 10 minutes (600 secondes)
 
 if __name__ == '__main__':
     main()
