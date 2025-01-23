@@ -9,6 +9,7 @@ const char* password = "aaaaaaaa";
 const char* serverUrl = "http://172.20.10.8:5001/data";
 
 WiFiClient client; // Créez une instance de WiFiClient
+
 void setup() {
   Serial.begin(115200);
   delay(1000);
@@ -27,7 +28,7 @@ void loop() {
   if (WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
 
-    // Commencez la requête avec WiFiClient
+    // Commencer la requête avec WiFiClient
     http.begin(client, serverUrl);
     http.addHeader("Content-Type", "application/json");
 
