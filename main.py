@@ -1,49 +1,36 @@
-# -*- coding: utf-8 -*-
-import json
-from flask import Flask, request
-from datetime import datetime
+import requests
+import time
 
-# Initialiser l'application Flask
-app = Flask(__name__)
+# URL de l'API Open-Meteo pour la météo actuelle de Toulouse
+URL = "https://api.open-meteo.com/v1/forecast"
 
-# Nom du fichier où enregistrer les données
-log_file = 'data_logs.json'
+# Paramètres pour récupérer la température de Toulouse en degrés Celsius
+params = {
+    'latitude': 43.6047,  # Latitude de Toulouse
+    'longitude': 1.4442,   # Longitude de Toulouse
+    'current_weather': 'true',  # Récupérer la météo actuelle
+    'temperature_unit': 'celsius'  # Unité de température en Celsius
+}
 
-@app.route('/data', methods=['POST'])
-def receive_data():
-    # Récupérer les données JSON envoyées par le client
-    data = request.json
-    if data:
-        id = data.get('id')
-        log_entry = {
-            "timestamp": datetime.now().isoformat(),  # Heure ISO 8601
-            "data": data
-        }
-        # Écrire l'entrée JSON dans le fichier
-        with open(log_file, 'a', encoding='utf-8') as f:
-            f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
+def get_temperature():
+    try:
+        # Effectuer la requête vers l'API Open-Meteo
+        response = requests.get(URL, params=params)
+        data = response.json()
         
-        if id == 0:
-            # Afficher les données dans la console
-            print("Données reçues :")
-            print(f" - Température : {data.get('temperature')}°C")
-            print(f" - Humidité : {data.get('humidity')}%")
-            return "Données reçues", 200
-        elif id == 1:
-            # Afficher les données dans la console
-            print("Données reçues :")
-            print(f" - Porte : {data.get('door')}")
-            return "Données reçues", 200
-    else:
-        # Créer une entrée d'erreur si aucune donnée n'est reçue
-        log_entry = {
-            "timestamp": datetime.now().isoformat(),
-            "error": "Aucune donnée reçue"
-        }
-        # Écrire l'entrée d'erreur dans le fichier
-        with open(log_file, 'a', encoding='utf-8') as f:
-            f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
-        return "Aucune donnée reçue", 400
+        if response.status_code == 200:
+            # Extraire la température actuelle
+            temperature = data['current_weather']['temperature']
+            print(f"Température actuelle à Toulouse : {temperature}°C")
+        else:
+            print(f"Erreur lors de la requête : {data}")
+    except Exception as e:
+        print(f"Erreur lors de la connexion à l'API : {e}")
+
+def main():
+    while True:
+        get_temperature()  # Appeler la fonction pour obtenir la température
+        time.sleep(10)  # Attendre 10 minutes (600 secondes)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001)
+    main()
