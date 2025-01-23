@@ -25,7 +25,7 @@ def get_temperature():
             temperature = data['current_weather']['temperature']
             timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
             
-            # Créer un dictionnaire avec la température et l'horodatage
+            # Créer un json avec la température et l'horodatage
             meteo_data = {
                 "timestamp": timestamp,
                 "temperature": temperature
