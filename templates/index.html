@@ -1,11 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Capteurs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capteurs et Notifications</title>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+    <script src="/static/script.js" defer></script>
 </head>
 <body>
-    <h1>Dernières données des capteurs</h1>
+    <h1>Capteurs et Notifications</h1>
+
+    <p>Assurez-vous que les notifications sont activées dans votre navigateur.</p>
+    <button id="enable-notifications">Activer les notifications</button>
+
+    <h2>Dernières données des capteurs</h2>
     <div class="container">
         {% for sensor in data %}
         <div class="sensor-card">

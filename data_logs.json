@@ -1,5 +1,5 @@
 [{"timestamp": "2025-01-16T11:28:52.537048", "data": {"id": 1, "door": 1}},
 {"timestamp": "2025-01-16T11:28:52.643784", "data": {"id": 1, "door": 1}},
 {"timestamp": "2025-01-16T11:28:52.749345", "data": {"id": 1, "door": 1}},
-{"timestamp": "2025-01-16 10:00:00", "data": {"id": 0, "temperature": 23.5, "humidity": 60}}
+{"timestamp": "2025-01-16 10:00:00", "data": {"id": 0, "temperature":22.5, "humidity": 60}}
 ]
