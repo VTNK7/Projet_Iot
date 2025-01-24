@@ -1,37 +1,36 @@
-from flask import Flask, render_template, jsonify, request
-from pywebpush import webpush, WebPushException
+from flask import Flask, render_template, jsonify
+from flask_socketio import SocketIO
 import requests
 import json
-from dotenv import load_dotenv
-import os
-
-# Load environment variables from .env
-load_dotenv()
-
-VAPID_PUBLIC_KEY = os.getenv("VAPID_PUBLIC_KEY")
-VAPID_PRIVATE_KEY = os.getenv("VAPID_PRIVATE_KEY")
-VAPID_CLAIMS = {"sub": "mailto:your_email@example.com"}
-
+import time
+import threading
 
 app = Flask(__name__)
+socketio = SocketIO(app)
 
 # Charger les données simulées à partir d'un fichier JSON
 def load_example_data():
     with open('data_logs.json', 'r') as file:
         return json.load(file)
 
-# Route pour afficher les dernières données des capteurs
-@app.route('/')
-def index():
-    # Charger les données simulées
-    data = load_example_data()
 
-    # Récupérer les dernières données de chaque capteur
+# Récupération des données les plus récentes
+def get_latests_data(): 
+    data = load_example_data()
     latest_data = {}
     for entry in data:
         sensor_id = entry['data']['id']
         if sensor_id not in latest_data or entry['timestamp'] > latest_data[sensor_id]['timestamp']:
             latest_data[sensor_id] = entry
+    return latest_data
+  
+
+# Route pour afficher les dernières données des capteurs
+@app.route('/')
+def index():
+
+    # Récupérer les dernières données de chaque capteur
+    latest_data = get_latests_data()
 
     # Transformer les données pour l'affichage
     display_data = []
@@ -49,13 +48,12 @@ def index():
         display_data.append(sensor_info)
 
         # Check conditions and send notifications if needed
-        if display_data[0]["door"] == 1:  # Door is open
-            outside_temp = fetch_outside_temperature()
-            if outside_temp is not None and display_data[0]["temperature"] is not None:
-                if outside_temp < display_data[0]["temperature"]:
-                    send_notification(
-                        f"The door is open! Outside temp: {outside_temp}°C, Inside temp: {display_data[0]['temperature']}°C"
-                    )
+    if display_data[0]["door"] == "Ouvert":  # Door is open
+        outside_temp = fetch_outside_temperature()
+        if outside_temp is not None and display_data[1]["temperature"] is not None:
+            if outside_temp < display_data[1]["temperature"]:
+                print("IL FAIT FROID DE ZINZIN")
+                socketio.emit('notification', {'message': f"The door is open! Outside temp: {outside_temp}°C, Inside temp: {display_data[1]['temperature']}°C"})
 
     return render_template('index.html', data=display_data)
 
@@ -90,30 +88,6 @@ def api_data():
     data = load_example_data()
     return jsonify(data)
 
-# Route to save subscription
-@app.route("/subscribe", methods=["POST"])
-def subscribe():
-    subscription_info = requests.json
-    subscriptions.append(subscription_info)
-    return jsonify({"message": "Subscription saved!"}), 201
-
-# Route to send notifications
-@app.route("/send_notification", methods=["POST"])
-def send_notification():
-    message = requests.json.get("message", "Default Notification")
-    for subscription in subscriptions:
-        try:
-            webpush(
-                subscription_info=subscription,
-                data=message,
-                vapid_private_key=VAPID_PRIVATE_KEY,
-                vapid_claims=VAPID_CLAIMS,
-            )
-        except WebPushException as e:
-            print(f"Error sending push notification: {e}")
-    return jsonify({"message": "Notifications sent!"}), 200
-
-subscriptions = []
 
 # Fetch outside temperature from meteo.json
 def fetch_outside_temperature():
@@ -124,26 +98,6 @@ def fetch_outside_temperature():
     except Exception as e:
         print(f"Error reading meteo.json: {e}")
     return None
-
-@app.route("/send-test-notification", methods=["GET"])
-def send_test_notification():
-    message = "Ceci est une notification de test !"
-    for subscription in subscriptions:
-        try:
-            webpush(
-                subscription_info=subscription,
-                data=message,
-                vapid_private_key=VAPID_PRIVATE_KEY,
-                vapid_claims=VAPID_CLAIMS,
-            )
-        except WebPushException as e:
-            print(f"Erreur d'envoi de notification : {e}")
-    return jsonify({"message": "Notification envoyée !"}), 200
-
-@app.route("/")
-def home():
-    return render_template("index.html")
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)
