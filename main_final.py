@@ -1,4 +1,5 @@
-from flask import Flask, render_template, jsonify
+from datetime import datetime
+from flask import Flask, render_template, jsonify, request
 from flask_socketio import SocketIO
 import requests
 import json
@@ -12,6 +13,20 @@ socketio = SocketIO(app)
 def load_example_data():
     with open('data_logs.json', 'r') as file:
         return json.load(file)
+    
+def load_existing_data():
+    try:
+        with open(log_file, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+def save_data(data):
+    with open(log_file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+
 
 # URL de l'API Open-Meteo pour la météo actuelle de Toulouse
 URL = "https://api.open-meteo.com/v1/forecast"
@@ -60,6 +75,7 @@ def index():
         elif sensor_id == 1:  # Fermeture de porte
             sensor_info["door"] = "Fermé" if entry["data"]["door"] == 0 else "Ouvert"
         display_data.append(sensor_info)
+    print(display_data)
 
         # Check conditions and send notifications if needed
     if display_data[0]["door"] == "Ouvert":  # Door is open
@@ -147,34 +163,22 @@ def receive_data():
     data = request.json
     if data:
         id = data.get('id')
+
+
+        log_data = load_existing_data()
         log_entry = {
-            "timestamp": datetime.now().isoformat(),  # Heure ISO 8601
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "data": data
         }
-        # Écrire l'entrée JSON dans le fichier
-        with open(log_file, 'a', encoding='utf-8') as f:
-            f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
         
-        if id == 0:
-            # Afficher les données dans la console
-            print("Données reçues :")
-            print(f" - Température : {data.get('temperature')}°C")
-            print(f" - Humidité : {data.get('humidity')}%")
-            return "Données reçues", 200
-        elif id == 1:
-            # Afficher les données dans la console
-            print("Données reçues :")
-            print(f" - Porte : {data.get('door')}")
-            return "Données reçues", 200
+        # Add to existing data
+        log_data.append(log_entry)
+        
+        # Save updated data
+        save_data(log_data)
+        
+        return "Données reçues", 200
     else:
-        # Créer une entrée d'erreur si aucune donnée n'est reçue
-        log_entry = {
-            "timestamp": datetime.now().isoformat(),
-            "error": "Aucune donnée reçue"
-        }
-        # Écrire l'entrée d'erreur dans le fichier
-        with open(log_file, 'a', encoding='utf-8') as f:
-            f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
         return "Aucune donnée reçue", 400
 
 

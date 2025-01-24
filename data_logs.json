@@ -1,331 +1,421 @@
 [
   {
-    "timestamp": "2025-01-24 12:20:03",
-    "data": {
-      "temperature": 24.2,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:20:07",
-    "data": {
-      "temperature": 24.3,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:20:11",
-    "data": {
-      "id": 1,
-      "door": 0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:20:12",
-    "data": {
-      "temperature": 24.3,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:20:16",
-    "data": {
-      "temperature": 24.3,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:20:16",
+    "timestamp": "2025-01-24 12:57:31",
     "data": {
       "id": 1,
       "door": 1
     }
   },
   {
-    "timestamp": "2025-01-24 12:20:17",
+    "timestamp": "2025-01-24 12:57:32",
     "data": {
       "id": 1,
       "door": 0
     }
   },
   {
-    "timestamp": "2025-01-24 12:20:20",
+    "timestamp": "2025-01-24 12:57:35",
     "data": {
-      "temperature": 24.3,
-      "humidity": 95.0
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
     }
   },
   {
-    "timestamp": "2025-01-24 12:20:25",
+    "timestamp": "2025-01-24 12:57:39",
     "data": {
-      "temperature": 24.3,
-      "humidity": 95.0
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
     }
   },
   {
-    "timestamp": "2025-01-24 12:20:29",
+    "timestamp": "2025-01-24 12:57:43",
     "data": {
-      "temperature": 24.3,
-      "humidity": 95.0
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
     }
   },
   {
-    "timestamp": "2025-01-24 12:20:33",
+    "timestamp": "2025-01-24 12:57:47",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:57:52",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:57:56",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:57:58",
     "data": {
       "id": 1,
       "door": 1
     }
   },
   {
-    "timestamp": "2025-01-24 12:20:33",
+    "timestamp": "2025-01-24 12:58:00",
     "data": {
-      "temperature": 24.3,
-      "humidity": 95.0
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
     }
   },
   {
-    "timestamp": "2025-01-24 12:20:36",
+    "timestamp": "2025-01-24 12:58:04",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:08",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:13",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:17",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:21",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:25",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:29",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:34",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:38",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:42",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:47",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:51",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:55",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:58:59",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:03",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:08",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:12",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:16",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:20",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:24",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:28",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:33",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:37",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:41",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:50",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:54",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 12:59:56",
     "data": {
       "id": 1,
       "door": 0
     }
   },
   {
-    "timestamp": "2025-01-24 12:20:38",
+    "timestamp": "2025-01-24 12:59:58",
     "data": {
-      "temperature": 24.3,
-      "humidity": 95.0
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
     }
   },
   {
-    "timestamp": "2025-01-24 12:20:42",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:20:46",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:20:51",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:20:55",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:20:59",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:03",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:07",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:11",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:15",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:20",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:24",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:28",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:32",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:36",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:40",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:45",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:45",
+    "timestamp": "2025-01-24 13:00:01",
     "data": {
       "id": 1,
       "door": 1
     }
   },
   {
-    "timestamp": "2025-01-24 12:21:46",
-    "data": {
-      "id": 1,
-      "door": 0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:49",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:53",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:21:57",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:22:01",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:22:05",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:22:09",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:22:14",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:22:21",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:22:25",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:22:29",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:22:33",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:22:37",
+    "timestamp": "2025-01-24 13:00:03",
     "data": {
       "temperature": 24.5,
-      "humidity": 95.0
+      "humidity": 95.0,
+      "id": 0
     }
   },
   {
-    "timestamp": "2025-01-24 12:22:41",
-    "data": {
-      "temperature": 24.4,
-      "humidity": 95.0
-    }
-  },
-  {
-    "timestamp": "2025-01-24 12:22:46",
+    "timestamp": "2025-01-24 13:00:07",
     "data": {
       "temperature": 24.5,
-      "humidity": 95.0
+      "humidity": 95.0,
+      "id": 0
     }
   },
   {
-    "timestamp": "2025-01-24 12:22:50",
+    "timestamp": "2025-01-24 13:00:11",
     "data": {
       "temperature": 24.5,
-      "humidity": 95.0
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 13:00:15",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 13:00:19",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 13:00:23",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 13:00:28",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 13:00:32",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 13:00:36",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 13:00:41",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 13:00:45",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 13:00:49",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 13:00:53",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
+    }
+  },
+  {
+    "timestamp": "2025-01-24 13:00:57",
+    "data": {
+      "temperature": 24.5,
+      "humidity": 95.0,
+      "id": 0
     }
   }
 ]
