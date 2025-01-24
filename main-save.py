@@ -13,6 +13,7 @@ log_file = 'data_logs.json'
 def receive_data():
     # Récupérer les données JSON envoyées par le client
     data = request.json
+
     if data:
         id = data.get('id')
         log_entry = {
@@ -34,6 +35,7 @@ def receive_data():
             print("Données reçues :")
             print(f" - Porte : {data.get('door')}")
             return "Données reçues", 200
+        return "data received", 400
     else:
         # Créer une entrée d'erreur si aucune donnée n'est reçue
         log_entry = {
