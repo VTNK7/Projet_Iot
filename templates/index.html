@@ -17,18 +17,18 @@
     <h2>Dernières données des capteurs</h2>
     <div class="container">
         {% for sensor in data %}
-        <div class="sensor-card">
+        <div class="sensor-card" id="sensor-{{ loop.index0 }}">
             <h2>{{ sensor.sensor_type }}</h2>
-            <p><strong>Timestamp :</strong> {{ sensor.timestamp }}</p>
+            <p class="sensor-timestamp"><strong>Timestamp :</strong> {{ sensor.timestamp }}</p>
             {% if sensor.sensor_type == "Température/Humidité" %}
-                <p><strong>Température :</strong> {{ sensor.temperature }} °C</p>
-                <p><strong>Humidité :</strong> {{ sensor.humidity }} %</p>
+                <p class="sensor-temperature"><strong>Température :</strong> {{ sensor.temperature }} °C</p>
+                <p class="sensor-humidity"><strong>Humidité :</strong> {{ sensor.humidity }} %</p>
             {% elif sensor.sensor_type == "Fermeture de porte" %}
-                <p><strong>État de la porte :</strong> {{ sensor.door }}</p>
+                <p class="sensor-door"><strong>État de la porte :</strong> {{ sensor.door }}</p>
             {% endif %}
             <a href="/history/{{ loop.index0 }}">Voir l'historique</a>
         </div>
         {% endfor %}
     </div>
-</body>
+    </body>
 </html>

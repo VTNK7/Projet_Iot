@@ -59,6 +59,8 @@ def get_latests_data():
 @app.route('/')
 def index():
     print("ONLANCE INDEX")
+       
+    socketio.emit('notification', {'message': 'Voici une notification!'})
     # Récupérer les dernières données de chaque capteur
     latest_data = get_latests_data()
 
@@ -76,18 +78,17 @@ def index():
         elif sensor_id == 1:  # Fermeture de porte
             sensor_info["door"] = "Fermé" if entry["data"]["door"] == 0 else "Ouvert"
         display_data.append(sensor_info)
-    print(display_data[1])
-    
+    print(display_data)
+
         # Check conditions and send notifications if needed
-    if display_data and display_data[1].get('door') == "Ouvert":
+    if display_data[0]["door"] == "Ouvert":  # Door is open
         print("dooropen")
         outside_temp = fetch_outside_temperature()
-        print(display_data[0]["temperature"])
         print(f"Outside temp: {outside_temp}")
-        if outside_temp is not None and display_data[0]["temperature"] is not None:
-            if outside_temp < display_data[0]["temperature"]:
+        if outside_temp is not None and display_data[1]["temperature"] is not None:
+            if outside_temp < display_data[1]["temperature"]:
                 print("IL FAIT FROID DE ZINZIN")
-                socketio.emit('notification', {'message': f"The door is open! Outside temp: {outside_temp}°C, Inside temp: {display_data[0]['temperature']}°C"})
+                socketio.emit('notification', {'message': "attentioun"})
 
     return render_template('index.html', data=display_data)
 
@@ -190,4 +191,4 @@ def receive_data():
 
 
 if __name__ == '__main__':
-    socketio.run(app,host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=5001)

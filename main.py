@@ -32,7 +32,7 @@ def get_temperature():
             }
 
             # Sauvegarder les données dans le fichier meteo.json
-            with open('meteo.json', 'a') as f:
+            with open('meteo.json', 'w') as f:
                 json.dump(meteo_data, f)
                 f.write('\n')  
             print(f"Données sauvegardées : {meteo_data}")
@@ -44,7 +44,7 @@ def get_temperature():
 def main():
     while True:
         get_temperature()  
-        time.sleep(600)  # Attendre 10 minutes
+        time.sleep(10)  # Attendre 10 minutes
 
 if __name__ == '__main__':
     main()

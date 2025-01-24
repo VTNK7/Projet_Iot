@@ -41,20 +41,22 @@
         });
 
         // Connect to the Flask-SocketIO server
-        const socket = io();
+        const socket = io("http://localhost:5001"); // Assure-toi d'utiliser le bon port ici
 
-        // Listen for the 'notification' event
         socket.on('notification', function(data) {
-            // Check if notifications are granted
+            console.log("Notification received:", data); // Affiche les données reçues
             if (Notification.permission === "granted") {
                 new Notification("New Event Notification", {
-                    body: data.message, // The message received from the server
-                    icon: "https://cdn-icons-png.flaticon.com/512/847/847969.png" // Optional: Add a notification icon
+                    body: data.message, // Le message reçu du serveur
+                    icon: "https://cdn-icons-png.flaticon.com/512/847/847969.png" // Optionnel: Ajouter une icône à la notification
                 });
             } else {
                 console.log("Notifications are not enabled. Message: ", data.message);
             }
         });
+
+
+        
     </script>
 </body>
 </html>
