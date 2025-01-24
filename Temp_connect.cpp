@@ -19,7 +19,7 @@ const char* ssid = "iPhone de Victor";
 const char* password = "aaaaaaaa";
 
 // Adresse IP et port du serveur
-const char* serverUrl = "http://172.20.10.8:5001/data";
+const char* serverUrl = "http:/172.22.224.105:5001/data";
 
 WiFiClient client; // Créez une instance de WiFiClient
 
