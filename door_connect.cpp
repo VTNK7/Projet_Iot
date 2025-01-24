@@ -5,14 +5,13 @@
 #define lights D4 // Led in NodeMCU at pin GPIO16 (D0).
 #define sensor D3 // Led in NodeMCU at pin GPIO16 (D0).
 
-// Replace with your network credentials
 const char* ssid = "iPhone de Victor";
 const char* password = "aaaaaaaa";
 
 // Adresse IP et port du serveur
 const char* serverUrl = "http://172.20.10.8:5001/data";
 
-WiFiClient client; // Créez une instance de WiFiClient
+WiFiClient client; // Crée une instance de WiFiClient
 String jsonOld="";
 
 void setup() {
